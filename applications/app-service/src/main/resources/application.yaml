@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "proyectoUsuarios"
+  r2dbc:
+    host: localhost
+    port: 5432
+    database: users_proyect
+    username: postgres
+    password: 123456
+  sql:
+    init:
+      mode: never   # <--- desactiva la ejecución automática de schema.sql o data.sql
+    devtools:
+      add-properties: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: false
+
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: logs/proyecto-usuarios.log
